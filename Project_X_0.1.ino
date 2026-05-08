@@ -45,7 +45,9 @@ class CommandCallback : public BLECharacteristicCallbacks {
 
       case CMD_ON:
         Serial.println("CMD: ON");
-        returnMotor();
+        setSolenoid(true);
+        delay(500);
+        setSolenoid(false);
         break;
 
       case CMD_OFF:
@@ -69,7 +71,7 @@ class CommandCallback : public BLECharacteristicCallbacks {
 
       case CMD_FIRE:
         Serial.println("CMD: Fire");
-        pulseFan(10000);
+        pulseFan(5000);
         break;
 
       case CMD_LOAD:
@@ -82,11 +84,11 @@ class CommandCallback : public BLECharacteristicCallbacks {
         Serial.print(cmd);
         Serial.println(")");
         break;
-    } // <-- tämä sulkee switchin oikein
+    }
 
-  } // <-- tämä sulkee onWrite-funktion
+  }
 
-}; // <-- tämä sulkee classin
+};
 
 
 void setup() {
@@ -125,6 +127,9 @@ void setup() {
 }
 
 void loop() {
+  int value = sensor_getRawValue();
+  Serial.print("Raaka-arvo: ");
+  Serial.println(value);
   if (sensor_ballDetected()){
     Serial.println("SENSORI: Pallo havaittu!");
     delay(50);          // säätövara lyöntihetkeen
@@ -170,5 +175,5 @@ void loop() {
   }
   
   // Pieni viive, jotta CPU ei käy täysillä
-  delay(100); 
+  delay(5000); 
 }
