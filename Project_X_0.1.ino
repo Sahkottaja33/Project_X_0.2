@@ -45,7 +45,9 @@ class CommandCallback : public BLECharacteristicCallbacks {
 
       case CMD_ON:
         Serial.println("CMD: ON");
-        returnMotor();
+        setSolenoid(true);
+        delay(500);
+        setSolenoid(false);
         break;
 
       case CMD_OFF:
@@ -69,7 +71,7 @@ class CommandCallback : public BLECharacteristicCallbacks {
 
       case CMD_FIRE:
         Serial.println("CMD: Fire");
-        pulseFan(10000);
+        pulseFan(5000);
         break;
 
       case CMD_LOAD:
