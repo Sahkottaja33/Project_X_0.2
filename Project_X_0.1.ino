@@ -84,11 +84,11 @@ class CommandCallback : public BLECharacteristicCallbacks {
         Serial.print(cmd);
         Serial.println(")");
         break;
-    } // <-- tämä sulkee switchin oikein
+    }
 
-  } // <-- tämä sulkee onWrite-funktion
+  }
 
-}; // <-- tämä sulkee classin
+};
 
 
 void setup() {
@@ -175,5 +175,5 @@ void loop() {
   }
   
   // Pieni viive, jotta CPU ei käy täysillä
-  delay(1000); 
+  delay(5000); 
 }
