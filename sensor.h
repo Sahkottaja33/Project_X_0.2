@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define SENSOR_TRESHOLD 2200 // esim, voi olla muutakin
+#define SENSOR_TRESHOLD 2600 // esim, voi olla muutakin
 #define SENSOR_PIN 11
 
 void sensorInit();

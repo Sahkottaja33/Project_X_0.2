@@ -101,6 +101,7 @@ void setup() {
   motorInit();
   solenoidInit();
   sensorInit();
+  
 
   BLEDevice::init("ESP32 Controller");
   delay(200);
@@ -128,7 +129,6 @@ void setup() {
 
 void loop() {
   int value = sensor_getRawValue();
-  
   if (sensor_ballDetected()) {
     delay(10);                        // debounce tässä
     if (!sensor_ballDetected()) {     // vahvistus
@@ -181,5 +181,5 @@ void loop() {
   }
   
   // Pieni viive, jotta CPU ei käy täysillä
-  delay(20); 
+  delay(15); 
 }
